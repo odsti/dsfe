@@ -2,7 +2,8 @@
 
 Package to support the DSFE (Data Science For Everyone) textbook.
 
-The most recent version of the textbook at time of writing is the [London Interdisciplinary School version](https://lisds.github.com/textbook).
+The most recent version of the textbook at time of writing is the [London
+Interdisciplinary School version](https://lisds.github.com/textbook).
 
 The DSFE package contains various routines to ease some of the more complex
 calls to various Numpy and Scipy routines.
