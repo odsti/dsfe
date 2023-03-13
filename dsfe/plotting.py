@@ -30,14 +30,15 @@ def count_bar(arr, x_vals=None):
     bc : BarContainer
         The Matplotlib container for a bar plot.
     """
-    to_count = np.asarray(arr).astype(int)
     # Convert arr to integers if necessary.
-    # Counts for each integer in to_count
-    counts = np.bincount(to_count)
-    if x_vals is None:
-        x_vals = np.arange(len(counts))
-    # Do bar graph with integer on x axis, counts on y.
-    out = plt.bar(x_vals, counts[x_vals])
-    # Set x 
+    to_count = np.asarray(arr).astype(int)
+    if x_vals is None:  # We didn't specify x_vals
+        y_vals = np.bincount(to_count)  # Count numbers of each integer.
+        x_vals = np.arange(len(y_vals))
+    else:  # We specified x_vals
+        # Make counts go up as far as we need for the x_vals indices.
+        counts = np.bincount(to_count, minlength=np.max(x_vals) + 1)
+        y_vals = counts[x_vals]
+    out = plt.bar(x_vals, y_vals)
     plt.xticks(x_vals)
     return out
